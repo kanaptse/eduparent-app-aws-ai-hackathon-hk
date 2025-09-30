@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: EduParent App Backend
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 512
+    Runtime: python3.11
+Resources:
+  EduParentAPI:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: EduParentAPI
+      Handler: lambda_handler.handler
+      Policies:
+      - AWSLambdaBasicExecutionRole
+      - Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - bedrock:InvokeModel
+          - bedrock:InvokeModelWithResponseStream
+          - bedrock:ListFoundationModels
+          - bedrock:GetFoundationModel
+          Resource:
+          - Fn::Sub: arn:aws:bedrock:${AWS::Region}::foundation-model/*
+          - Fn::Sub: arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:*
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+        RootEvent:
+          Type: Api
+          Properties:
+            Path: /
+            Method: ANY
+      Environment:
+        Variables:
+          DATABASE_URL: sqlite:///tmp/eduparent.db
+          JWT_SECRET_KEY: your-jwt-secret-key-here
+          OPENAI_API_KEY: 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
+          EVALUATION_MODEL: openai:gpt-4o-mini
+          TEEN_RESPONSE_MODEL: openai:gpt-4o-mini
+          MAX_ATTEMPTS: '3'
+          PASS_THRESHOLD: '7'
+          SCENARIOS_DIR: app/roleplay/scenarios/data
+    Metadata:
+      SamResourceId: EduParentAPI
+Outputs:
+  ApiUrl:
+    Description: API Gateway endpoint URL
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/

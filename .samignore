@@ -1,0 +1,7 @@
+# Exclude everything except backend
+*
+!apps/
+apps/*
+!apps/backend/
+!lambda_handler.py
+!requirements.txt

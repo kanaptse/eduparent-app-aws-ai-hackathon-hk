@@ -1,0 +1,40 @@
+case_name: "School Drop-off Anxiety"
+case_name_zh: "上學分離焦慮"
+background_and_instructions: "Your 3-year-old is experiencing separation anxiety during school drop-off. This is a common challenge where children feel scared about being separated from their parents. Your goal is to help them feel secure while also encouraging independence through three progressively challenging interactions."
+background_and_instructions_zh: "你3歲嘅小朋友喺返學嘅時候出現分離焦慮。呢個係一個常見嘅挑戰，小朋友會對離開父母感到害怕。你嘅目標係透過三個逐步具挑戰性嘅互動，幫佢哋感到安全，同時鼓勵獨立。"
+
+multi_round: false
+rounds:
+  - round: 1
+    child_state: "Tearful, clinging, moderate distress"
+    child_prompt: "I don't want to go in! Don't leave me!"
+    child_prompt_zh: "我唔想入去！唔好走呀！"
+    evaluation_criteria:
+      - "emotion_acknowledgment"  # 0-3 points
+      - "tone_empathy"           # 0-2 points
+      - "solution_approach"      # 0-3 points
+    pass_threshold: 7
+
+  - round: 2
+    child_state: "More vulnerable, seeking reassurance"
+    child_prompt: "But what if you leave forever?"
+    child_prompt_zh: "但係如果你永遠都唔返嚟點算？"
+    evaluation_criteria:
+      - "fear_validation"        # 0-4 points
+      - "concrete_reassurance"   # 0-3 points
+      - "collaborative_approach" # 0-3 points
+    pass_threshold: 7
+
+  - round: 3
+    child_state: "Calmer but still hesitant"
+    child_prompt: "Okay... but you have to stay."
+    child_prompt_zh: "好啦...但係你一定要留低。"
+    evaluation_criteria:
+      - "transition_strategy"    # 0-4 points
+      - "child_agency"          # 0-3 points
+      - "follow_through_clarity" # 0-3 points
+    pass_threshold: 7
+
+# Fallback for older single-round compatibility
+child_prompts:
+  - "I don't want to go in! Don't leave me!"

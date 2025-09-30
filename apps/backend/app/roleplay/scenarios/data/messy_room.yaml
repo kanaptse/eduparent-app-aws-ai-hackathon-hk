@@ -1,0 +1,7 @@
+case_name: "Messy Room"
+case_name_zh: "亂丟衫"
+background_and_instructions: "Your 14-year-old teenager has been leaving clothes on the floor for several days. You've just come home from work and are tired, and seeing the messy room is frustrating. It's 9 PM, with clothes and textbooks scattered on the floor."
+background_and_instructions_zh: "背景：個仔14歲，中二。最近成日將啲衫丟喺房間地下，連續幾日都唔執。父母啱啱返工返嚟已經好攰，見到房間咁亂仲煩躁。夜晚9點，房間地下散落住啲衫同課本。"
+child_prompts:
+  - "Mom (Dad), I'll clean it later, I'm tired now!"
+  - "媽（爸），遲啲我再執啦，而家好攰呀！"
