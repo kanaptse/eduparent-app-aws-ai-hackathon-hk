@@ -42,7 +42,7 @@ Resources:
         Variables:
           DATABASE_URL: "sqlite:///tmp/eduparent.db"
           JWT_SECRET_KEY: "your-jwt-secret-key-here"
-          OPENAI_API_KEY: "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"
+          OPENAI_API_KEY: "your-openai-api-key-here"
           EVALUATION_MODEL: "openai:gpt-4o-mini"
           TEEN_RESPONSE_MODEL: "openai:gpt-4o-mini"
           MAX_ATTEMPTS: "3"
